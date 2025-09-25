@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gesture Translator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <ul class="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#About">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header id="home">
+    <img src="{{ url_for('static', filename='images/logo1.png') }}" alt="Logo" height="100" width="300">
+    <div class="logo-container">
+      <h1 class="logo">Gesture Translator</h1>
+      <p class="subheading">Convert Sign Language Gestures into Text in Real-Time</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Combined Video & Gesture Section -->
+    <section class="video-gesture-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; align-items: flex-start;">
+      
+      <!-- Video Section -->
+      <div class="video-container">
+        <button id="startButton" class="btn" data-tooltip="Click to start the camera!">Start Camera</button>
+        <button id="stopButton" class="btn" style="display:none; margin-left: 10px;">Stop</button>
+        <div id="cameraStatus" class="status-message">Camera not started</div>
+        <video id="videoElement" width="500" height="500px" autoplay muted playsinline></video>
+        <label for="gestureInput" class="output-label">Recognized Letter:</label>
+        <input type="text" id="gestureInput" placeholder="Gesture will appear here..." readonly />
+      </div>
+
+      <!-- Sentence Output Section -->
+      <div class="gesture-output" style="max-width: 400px;">
+        <div class="output-box">
+          <label for="sentenceInput" class="output-label">Current Sentence:</label>
+          <input type="text" id="sentenceInput" placeholder="Sentence will appear here..." readonly />
+          <button id="speakButton">🔊 Speak Sentence</button>
+        </div>
+        <div id="gestureFeedback" class="gesture-feedback" style="margin-top: 20px;">Waiting for gesture...</div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- About Section -->
+  <section id="About" class="about-section">
+    <h2>About the Project</h2>
+    <p>
+      This project is built to recognize sign language gestures in real-time using a webcam. It translates the gestures into corresponding letters or words, forms meaningful sentences, and even speaks them out loud. Our goal is to bridge the communication gap for the hearing and speech impaired by using AI-powered gesture recognition.
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Gesture Translator. All rights reserved.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
